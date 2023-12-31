@@ -36,6 +36,7 @@ package leetcode;
  * Output: 2, nums = [2,2,_,_]
  * Explanation: Your function should return k = 2, with the first two elements of nums being 2.
  * It does not matter what you leave beyond the returned k (hence they are underscores).
+ * <p>
  * Example 2:
  * <p>
  * Input: nums = [0,1,2,2,3,0,4,2], val = 2
@@ -56,9 +57,9 @@ public class RemoveElement {
         int[] positions = new int[nums.length];
         int index = 0;
 
-        for(int i=0; i<nums.length; i++){
+        for (int i = 0; i < nums.length; i++) {
             int element = nums[i];
-            if(element == val){
+            if (element == val) {
                 positions[index] = i;
                 index++;
             }
@@ -70,7 +71,7 @@ public class RemoveElement {
         while (index < numVal && tempIndex >= 0) {
             int position = positions[index];
             int tempValue = nums[tempIndex];
-            if(tempValue != val){
+            if (tempValue != val) {
                 nums[position] = tempValue;
 
                 index++;
@@ -106,7 +107,6 @@ public class RemoveElement {
             } else {
                 System.out.print(array[i]);
             }
-
         }
         System.out.print("]");
     }
