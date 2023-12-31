@@ -1,8 +1,5 @@
 package list;
 
-import com.liuzhao.list.MyArrayList;
-import com.liuzhao.list.MyLinkedList;
-
 import java.util.Date;
 import java.util.Random;
 
