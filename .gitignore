@@ -1,3 +1,8 @@
+.idea/
+out/
+DataStructure-Algorithm.iml
+.DS_Store
+
 # Compiled class file
 *.class
 
