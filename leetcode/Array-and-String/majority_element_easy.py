@@ -1,5 +1,3 @@
-
-
 """
 Given an array nums of size n, return the majority element.
 
@@ -22,5 +20,23 @@ n == nums.length
 Follow-up: Could you solve the problem in linear time and in O(1) space?
 """
 
+
+def majority_element(nums: list[int]) -> int:
+    n = len(nums)
+    maj_elem = dict()
+    for num in nums:
+        if num in maj_elem.keys():
+            maj_elem[num] = maj_elem[num] + 1
+        else:
+            maj_elem[num] = 1
+    for key, value in maj_elem.items():
+        if value > n / 2:
+            return key
+
+
 if __name__ == '__main__':
-    pass
+    nums = [3, 2, 3]
+    majority_element(nums)
+
+    nums = [2, 2, 1, 1, 1, 2, 2]
+    majority_element(nums)

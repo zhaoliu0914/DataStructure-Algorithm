@@ -1,5 +1,3 @@
-
-
 """
 Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once.
 The relative order of the elements should be kept the same. Then return the number of unique elements in nums.
@@ -42,5 +40,26 @@ Constraints:
 nums is sorted in non-decreasing order.
 """
 
+
+def remove_duplicates(nums):
+    """
+    :type nums: List[int]
+    :rtype: int
+    """
+    temp_list = list()
+    for num in nums:
+        if num not in temp_list:
+            temp_list.append(num)
+
+    for index, temp in enumerate(temp_list):
+        nums[index] = temp
+
+    return len(temp_list)
+
+
 if __name__ == '__main__':
-    pass
+    nums = [1, 1, 2]
+    remove_duplicates(nums)
+
+    nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+    remove_duplicates(nums)

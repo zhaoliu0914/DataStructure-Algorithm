@@ -1,5 +1,3 @@
-
-
 """
 Given an integer array nums sorted in non-decreasing order, remove some duplicates in-place such that each unique element appears at most twice.
 The relative order of the elements should be kept the same.
@@ -46,5 +44,26 @@ Constraints:
 nums is sorted in non-decreasing order.
 """
 
+
+def remove_duplicates(nums):
+    """
+    :type nums: List[int]
+    :rtype: int
+    """
+
+    k = 2
+    size = len(nums)
+    for index in range(2, size):
+        if nums[index] != nums[k - 2]:
+            nums[k] = nums[index]
+            k = k + 1
+
+    return k
+
+
 if __name__ == '__main__':
-    pass
+    nums = [1, 1, 1, 2, 2, 3]
+    remove_duplicates(nums)
+
+    nums = [0, 0, 1, 1, 1, 1, 2, 3, 3]
+    remove_duplicates(nums)
