@@ -37,16 +37,25 @@ def jump(nums: list[int]) -> int:
         return 1
 
     step_list = []
+    current_step = 0
     index = 0
-    while index <= target - 1:
-        temp_max = sys.maxsize * -1
-        step = 0
-        for i in range(index + 1, index + nums[index] + 1):
-            if i < size and nums[i] >= temp_max:
-                step += 1
-                temp_max = nums[i]
-        step_list.append(step)
-        index = index + step
+    while index <= target:
+        step = nums[index]
+        print(f"step = {step}")
+
+        temp_step = current_step + step
+        if temp_step <= target:
+            for i in range(temp_step, index, -1):
+                if nums[i] != 0:
+                    index += i
+                    current_step += i
+                    step_list.append(i)
+
+                    print(f"step_list = {step_list}")
+                    break
+        else:
+            step_list.append(step)
+            break
 
     return len(step_list)
 
@@ -56,22 +65,22 @@ if __name__ == '__main__':
     result = jump(nums)
     print(f"nums = {nums}, result = {result}")
 
-    nums = [2, 3, 0, 1, 4]
-    result = jump(nums)
-    print(f"nums = {nums}, result = {result}")
+    # nums = [2, 3, 0, 1, 4]
+    # result = jump(nums)
+    # print(f"nums = {nums}, result = {result}")
 
-    nums = [4, 3, 0, 2, 0, 1, 4]
-    result = jump(nums)
-    print(f"nums = {nums}, result = {result}")
-
-    nums = [2, 3, 3, 2, 4, 1, 4, 5]  # 3 # 4
-    result = jump(nums)
-    print(f"nums = {nums}, result = {result}")
-
-    nums = [3, 2, 1]
-    result = jump(nums)
-    print(f"nums = {nums}, result = {result}")
-
-    nums = [3, 4, 3, 2, 5, 4, 3]
-    result = jump(nums)
-    print(f"nums = {nums}, result = {result}")
+    # nums = [4, 3, 0, 2, 0, 1, 4]
+    # result = jump(nums)
+    # print(f"nums = {nums}, result = {result}")
+    #
+    # nums = [2, 3, 3, 2, 4, 1, 4, 5]  # 3 # 4
+    # result = jump(nums)
+    # print(f"nums = {nums}, result = {result}")
+    #
+    # nums = [3, 2, 1]
+    # result = jump(nums)
+    # print(f"nums = {nums}, result = {result}")
+    #
+    # nums = [3, 4, 3, 2, 5, 4, 3]
+    # result = jump(nums)
+    # print(f"nums = {nums}, result = {result}")
