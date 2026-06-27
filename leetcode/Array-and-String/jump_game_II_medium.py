@@ -29,35 +29,19 @@ import sys
 
 def jump(nums: list[int]) -> int:
     size = len(nums)
-    target = size - 1
+    jumps = 0
+    farthest = 0
+    current_end = 0
 
-    if size == 1:
-        return 0
-    if nums[0] >= size - 1:
-        return 1
+    for i in range(size - 1):
+        farthest = max(farthest, i + nums[i])
 
-    step_list = []
-    current_step = 0
-    index = 0
-    while index <= target:
-        step = nums[index]
-        print(f"step = {step}")
+        if i == current_end:
+            #print(f"i = {i}, farthest = {farthest}, current_end = {current_end}")
+            jumps += 1
+            current_end = farthest
+    return jumps
 
-        temp_step = current_step + step
-        if temp_step <= target:
-            for i in range(temp_step, index, -1):
-                if nums[i] != 0:
-                    index += i
-                    current_step += i
-                    step_list.append(i)
-
-                    print(f"step_list = {step_list}")
-                    break
-        else:
-            step_list.append(step)
-            break
-
-    return len(step_list)
 
 
 if __name__ == '__main__':
@@ -65,22 +49,22 @@ if __name__ == '__main__':
     result = jump(nums)
     print(f"nums = {nums}, result = {result}")
 
-    # nums = [2, 3, 0, 1, 4]
-    # result = jump(nums)
-    # print(f"nums = {nums}, result = {result}")
+    nums = [2, 3, 0, 1, 4]
+    result = jump(nums)
+    print(f"nums = {nums}, result = {result}")
 
-    # nums = [4, 3, 0, 2, 0, 1, 4]
-    # result = jump(nums)
-    # print(f"nums = {nums}, result = {result}")
-    #
-    # nums = [2, 3, 3, 2, 4, 1, 4, 5]  # 3 # 4
-    # result = jump(nums)
-    # print(f"nums = {nums}, result = {result}")
-    #
-    # nums = [3, 2, 1]
-    # result = jump(nums)
-    # print(f"nums = {nums}, result = {result}")
-    #
-    # nums = [3, 4, 3, 2, 5, 4, 3]
-    # result = jump(nums)
-    # print(f"nums = {nums}, result = {result}")
+    nums = [4, 3, 0, 2, 0, 1, 4]
+    result = jump(nums)
+    print(f"nums = {nums}, result = {result}")
+
+    nums = [2, 3, 3, 2, 4, 1, 4, 5]  # 3 # 4
+    result = jump(nums)
+    print(f"nums = {nums}, result = {result}")
+
+    nums = [3, 2, 1]
+    result = jump(nums)
+    print(f"nums = {nums}, result = {result}")
+
+    nums = [3, 4, 3, 2, 5, 4, 3]
+    result = jump(nums)
+    print(f"nums = {nums}, result = {result}")
