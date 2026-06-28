@@ -75,8 +75,7 @@ class RandomizedSet:
                 for j in self.content[i]:
                     temp_list.append(j)
 
-        index = random.randint(0, len(temp_list) - 1)
-        return temp_list[index]
+        return random.choice(temp_list)
 
 if __name__ == '__main__':
     obj = RandomizedSet()
