@@ -40,5 +40,51 @@ n == gas.length == cost.length
 The input is generated such that the answer is unique.
 """
 
+
+def canCompleteCircuit(gas: list[int], cost: list[int]) -> int:
+    size = len(gas)
+    position = 0
+    total_diff = 0
+    current_diff = 0
+
+    for i in range(size):
+        diff = gas[i] - cost[i]
+
+        total_diff += diff
+        current_diff += diff
+
+        if current_diff < 0:
+            position = i + 1
+            current_diff = 0
+
+    if total_diff >= 0:
+        return position
+    else:
+        return -1
+
+
 if __name__ == '__main__':
-    pass
+    gas = [1, 2, 3, 4, 5]
+    cost = [3, 4, 5, 1, 2]
+    index = canCompleteCircuit(gas, cost)
+    print(f"gas = {gas}, cost = {cost}, index = {index}")
+
+    gas = [2, 3, 4]
+    cost = [3, 4, 3]
+    index = canCompleteCircuit(gas, cost)
+    print(f"gas = {gas}, cost = {cost}, index = {index}")
+
+    gas = [2, 5, 3]
+    cost = [3, 2, 9]
+    index = canCompleteCircuit(gas, cost)
+    print(f"gas = {gas}, cost = {cost}, index = {index}")
+
+    gas = [2]
+    cost = [2]
+    index = canCompleteCircuit(gas, cost)
+    print(f"gas = {gas}, cost = {cost}, index = {index}")
+
+    gas = [5, 1, 2, 3, 4]
+    cost = [4, 4, 1, 5, 1]
+    index = canCompleteCircuit(gas, cost)
+    print(f"gas = {gas}, cost = {cost}, index = {index}")

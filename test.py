@@ -31,14 +31,14 @@ if __name__ == '__main__':
     # for i in range(10, 0, -1):
     #     print(i)
 
-    sorted_function()
+    #sorted_function()
 
     #lambda_function()
 
     list1 = [3, 2, 0, 1]
-    print(list1.index(0))
+    print(list1[3])
 
 
-    arr = list(range(5))
-    print(arr)
+    # arr = list(range(5))
+    # print(arr)
 
