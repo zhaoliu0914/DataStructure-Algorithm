@@ -29,56 +29,17 @@ n == ratings.length
 
 def candy(ratings: list[int]) -> int:
     size = len(ratings)
-    results = [0] * size
+    values = [1] * size
 
-    number = 1
-    for i in range(size):
-        if i == 0:
-            results[i] = number
-        else:
-            previous_value = ratings[i - 1]
-            value = ratings[i]
+    for i in range(1, size):
+        if ratings[i] > ratings[i - 1]:
+            values[i] = values[i - 1] + 1
 
-            print(f"i = {i}, number = {number}")
+    for i in range(size - 2, -1, -1):
+        if ratings[i] > ratings[i + 1]:
+            values[i] = max(values[i], values[i + 1] + 1)
 
-            if value > previous_value:
-                number += 1
-            elif value == previous_value:
-                if number > 0:
-                    number = 1
-                elif number == 0:
-                    number = 0
-                else:
-                    number -= 1
-            else:
-                if number > 0:
-                    number = 1
-                elif number == 0:
-                    number = 0
-                else:
-                    number -= 1
-
-            results[i] = number
-
-    print(f"results = {results}")
-
-    smallest = 1
-    for i in range(size):
-        value = results[i]
-        if value < smallest:
-            smallest = value
-    gap = 0
-    if smallest <= 0:
-        gap = (smallest * -1) + 1
-
-    result = 0
-    for i in range(size):
-        if smallest > 0:
-            result += results[i]
-        else:
-            result += results[i] + gap
-
-    return result
+    return sum(values)
 
 
 if __name__ == '__main__':
@@ -91,5 +52,13 @@ if __name__ == '__main__':
     print(f"ratings = {ratings}, result = {result}")
 
     ratings = [1, 3, 2, 2, 1]
+    result = candy(ratings)
+    print(f"ratings = {ratings}, result = {result}")
+
+    ratings = [1, 3, 2, 2, 3]
+    result = candy(ratings)
+    print(f"ratings = {ratings}, result = {result}")
+
+    ratings = [1, 5, 4, 3, 2, 1]
     result = candy(ratings)
     print(f"ratings = {ratings}, result = {result}")
