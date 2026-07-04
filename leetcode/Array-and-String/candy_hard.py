@@ -28,7 +28,57 @@ n == ratings.length
 
 
 def candy(ratings: list[int]) -> int:
-    pass
+    size = len(ratings)
+    results = [0] * size
+
+    number = 1
+    for i in range(size):
+        if i == 0:
+            results[i] = number
+        else:
+            previous_value = ratings[i - 1]
+            value = ratings[i]
+
+            print(f"i = {i}, number = {number}")
+
+            if value > previous_value:
+                number += 1
+            elif value == previous_value:
+                if number > 0:
+                    number = 1
+                elif number == 0:
+                    number = 0
+                else:
+                    number -= 1
+            else:
+                if number > 0:
+                    number = 1
+                elif number == 0:
+                    number = 0
+                else:
+                    number -= 1
+
+            results[i] = number
+
+    print(f"results = {results}")
+
+    smallest = 1
+    for i in range(size):
+        value = results[i]
+        if value < smallest:
+            smallest = value
+    gap = 0
+    if smallest <= 0:
+        gap = (smallest * -1) + 1
+
+    result = 0
+    for i in range(size):
+        if smallest > 0:
+            result += results[i]
+        else:
+            result += results[i] + gap
+
+    return result
 
 
 if __name__ == '__main__':
@@ -37,5 +87,9 @@ if __name__ == '__main__':
     print(f"ratings = {ratings}, result = {result}")
 
     ratings = [1, 2, 2]
+    result = candy(ratings)
+    print(f"ratings = {ratings}, result = {result}")
+
+    ratings = [1, 3, 2, 2, 1]
     result = candy(ratings)
     print(f"ratings = {ratings}, result = {result}")
