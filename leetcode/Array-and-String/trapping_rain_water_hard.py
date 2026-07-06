@@ -21,7 +21,14 @@ n == height.length
 
 
 def trap(height: list[int]) -> int:
-    pass
+    size = len(height)
+    if size == 0:
+        return 0
+
+    left_max = [0] * size
+    right_max = [0] * size
+
+    left_max[0] = height[0]
 
 
 if __name__ == '__main__':
