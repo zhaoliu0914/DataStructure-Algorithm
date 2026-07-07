@@ -32,11 +32,19 @@ def trap(height: list[int]) -> int:
     for i in range(1, size):
         left_max[i] = max(left_max[i - 1], height[i])
 
+    print(f"left_max = {left_max}")
+
     right_max[size - 1] = height[size - 1]
     for i in range(size - 2, -1, -1):
         right_max[i] = max(right_max[i + 1], height[i])
 
-    return 0
+    print(f"right_max = {right_max}")
+
+    sum = 0
+    for i in range(size):
+        smallest_wall = min(left_max[i], right_max[i])
+        sum += smallest_wall - height[i]
+    return sum
 
 
 if __name__ == '__main__':
