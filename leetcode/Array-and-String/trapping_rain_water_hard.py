@@ -29,6 +29,14 @@ def trap(height: list[int]) -> int:
     right_max = [0] * size
 
     left_max[0] = height[0]
+    for i in range(1, size):
+        left_max[i] = max(left_max[i - 1], height[i])
+
+    right_max[size - 1] = height[size - 1]
+    for i in range(size - 2, -1, -1):
+        right_max[i] = max(right_max[i + 1], height[i])
+
+    return 0
 
 
 if __name__ == '__main__':
