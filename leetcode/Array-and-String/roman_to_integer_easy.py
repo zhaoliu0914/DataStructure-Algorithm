@@ -41,6 +41,7 @@ s contains only the characters ('I', 'V', 'X', 'L', 'C', 'D', 'M').
 It is guaranteed that s is a valid roman numeral in the range [1, 3999].
 """
 
+
 def romanToInt(s: str) -> int:
     roman_map = {
         "I": 1,
@@ -71,7 +72,6 @@ def romanToInt(s: str) -> int:
     count += roman_map[s[size - 1]]
 
     return count
-
 
 
 if __name__ == '__main__':

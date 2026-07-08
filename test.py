@@ -35,9 +35,9 @@ if __name__ == '__main__':
 
     #lambda_function()
 
-    list1 = [3, 2, 0, 1]
-    print(list1[3])
-
+    list1 = [3, 2, 0, 1, 4, 6, 7, 8, 10]
+    for i in range(len(list1)-2, -1, -2):
+        print(list1[i])
 
     # arr = list(range(5))
     # print(arr)
