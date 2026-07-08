@@ -41,8 +41,38 @@ s contains only the characters ('I', 'V', 'X', 'L', 'C', 'D', 'M').
 It is guaranteed that s is a valid roman numeral in the range [1, 3999].
 """
 
-def romanToInt(self, s: str) -> int:
-    pass
+def romanToInt(s: str) -> int:
+    roman_map = {
+        "I": 1,
+        "V": 5,
+        "X": 10,
+        "L": 50,
+        "C": 100,
+        "D": 500,
+        "M": 1000
+    }
+
+    size = len(s)
+    count = 0
+    index = 0
+
+    while index < size - 1:
+        left_char = s[index]
+        right_char = s[index + 1]
+        left_int = roman_map[left_char]
+        right_int = roman_map[right_char]
+
+        if left_int < right_int:
+            count -= left_int
+        else:
+            count += left_int
+
+        index += 1
+    count += roman_map[s[size - 1]]
+
+    return count
+
+
 
 if __name__ == '__main__':
     s = "III"
@@ -54,5 +84,9 @@ if __name__ == '__main__':
     print(f"s = {s}, result = {result}")
 
     s = "MCMXCIV"
+    result = romanToInt(s)
+    print(f"s = {s}, result = {result}")
+
+    s = "MCDLXXVI"
     result = romanToInt(s)
     print(f"s = {s}, result = {result}")
