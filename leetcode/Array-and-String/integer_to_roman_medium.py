@@ -50,8 +50,19 @@ Constraints:
 
 
 def intToRoman(num: int) -> str:
-    pass
+    size = len(num)
+
 
 
 if __name__ == '__main__':
-    pass
+    num = 3749
+    roman_num = intToRoman(num)
+    print(f"num = {num}, roman_num = {roman_num}")
+
+    num = 58
+    roman_num = intToRoman(num)
+    print(f"num = {num}, roman_num = {roman_num}")
+
+    num = 1994
+    roman_num = intToRoman(num)
+    print(f"num = {num}, roman_num = {roman_num}")
