@@ -39,6 +39,13 @@ if __name__ == '__main__':
     for i in range(len(list1)-2, -1, -2):
         print(list1[i])
 
+    print(f"749 / 500 = {749 / 500}")
+    print(f"749 // 500 = {749 // 500}")
+    print(f"749 % 500 = {749 % 500}")
+    print(f"divmod(749, 500) = {divmod(749, 500)}")
+
+    print(6 % 5)
+
     # arr = list(range(5))
     # print(arr)
 

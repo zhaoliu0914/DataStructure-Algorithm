@@ -50,90 +50,22 @@ Constraints:
 
 
 def intToRoman(num: int) -> str:
-    num = str(num)
-    size = len(num)
-    multiple = 0
+    int_roman_map = [
+        (1000, "M"), (900, "CM"), (500, "D"), (400, "CD"),
+        (100, "C"), (90, "XC"), (50, "L"), (40, "XL"),
+        (10, "X"), (9, "IX"), (5, "V"), (4, "IV"),
+        (1, "I")
+    ]
+
     roman = ""
-    for i in range(size-1, -1, -1):
-        multiple += 1
-        current = num[i]
-        current = int(current)
-        #print(f"i = {i}, multiple = {multiple}, current = {current}")
-        if current == 0:
-            pass
-        elif current == 1:
-            if multiple == 1:
-                roman = f"I{roman}"
-            elif multiple == 2:
-                roman = f"X{roman}"
-            elif multiple == 3:
-                roman = f"C{roman}"
-            elif multiple == 4:
-                roman = f"M{roman}"
-        elif current == 2:
-            if multiple == 1:
-                roman = f"II{roman}"
-            elif multiple == 2:
-                roman = f"XX{roman}"
-            elif multiple == 3:
-                roman = f"CC{roman}"
-            elif multiple == 4:
-                roman = f"MM{roman}"
-        elif current == 3:
-            if multiple == 1:
-                roman = f"III{roman}"
-            elif multiple == 2:
-                roman = f"XXX{roman}"
-            elif multiple == 3:
-                roman = f"CCC{roman}"
-            elif multiple == 4:
-                roman = f"MMM{roman}"
-        elif current == 4:
-            if multiple == 1:
-                roman = f"IV{roman}"
-            elif multiple == 2:
-                roman = f"XL{roman}"
-            elif multiple == 3:
-                roman = f"CD{roman}"
-        elif current == 5:
-            if multiple == 1:
-                roman = f"V{roman}"
-            elif multiple == 2:
-                roman = f"L{roman}"
-            elif multiple == 3:
-                roman = f"D{roman}"
-        elif current == 6:
-            if multiple == 1:
-                roman = f"VI{roman}"
-            elif multiple == 2:
-                roman = f"LX{roman}"
-            elif multiple == 3:
-                roman = f"DC{roman}"
-        elif current == 7:
-            if multiple == 1:
-                roman = f"VII{roman}"
-            elif multiple == 2:
-                roman = f"LXX{roman}"
-            elif multiple == 3:
-                roman = f"DCC{roman}"
-        elif current == 8:
-            if multiple == 1:
-                roman = f"VIII{roman}"
-            elif multiple == 2:
-                roman = f"LXXX{roman}"
-            elif multiple == 3:
-                roman = f"DCCC{roman}"
-        else:
-            if multiple == 1:
-                roman = f"IX{roman}"
-            elif multiple == 2:
-                roman = f"XC{roman}"
-            elif multiple == 3:
-                roman = f"CM{roman}"
-        #print(f"roman = {roman}")
+    remainder = num
+    for divisor, roman_char in int_roman_map:
+        if remainder == 0:
+            break
+        quotient, remainder = divmod(remainder, divisor)
+        roman = f"{roman}{roman_char * quotient}"
 
     return roman
-
 
 
 if __name__ == '__main__':
