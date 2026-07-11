@@ -32,4 +32,14 @@ def reverseWords(s: str) -> str:
 
 
 if __name__ == '__main__':
-    pass
+    s = "the sky is blue"
+    reverse_s = reverseWords(s)
+    print(f"s = {s}, reverse_s = {reverse_s}")
+
+    s = "  hello world  "
+    reverse_s = reverseWords(s)
+    print(f"s = {s}, reverse_s = {reverse_s}")
+
+    s = "a good   example"
+    reverse_s = reverseWords(s)
+    print(f"s = {s}, reverse_s = {reverse_s}")
