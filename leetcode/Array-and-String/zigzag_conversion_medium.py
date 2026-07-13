@@ -35,7 +35,24 @@ s consists of English letters (lower-case and upper-case), ',' and '.'.
 
 
 def convert(s: str, numRows: int) -> str:
-    pass
+    if numRows == 1:
+        return s
+
+    rows = [''] * min(len(s), numRows)
+    cursor_row = 0
+    going_down = False
+    for current_char in s:
+        rows[cursor_row] += current_char
+
+        # Flip direction at the top and bottom rows.
+        if cursor_row == 0 or cursor_row == (numRows - 1):
+            going_down = not going_down
+
+        if going_down:
+            cursor_row += 1
+        else:
+            cursor_row -= 1
+    return "".join(rows)
 
 
 if __name__ == '__main__':
