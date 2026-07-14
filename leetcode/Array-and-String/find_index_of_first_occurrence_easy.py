@@ -21,16 +21,38 @@ haystack and needle consist of only lowercase English characters.
 
 
 def strStr(haystack: str, needle: str) -> int:
-    pass
+    size = len(haystack)
+    current = 0
+    while current < size:
+        if haystack[current] == needle[0]:
+            is_matched = True
+            for i in range(1, len(needle)):
+                if (current+i) >= size or haystack[current+i] != needle[i]:
+                    is_matched = False
+                    break
+            if is_matched:
+                return current
+        current += 1
+    return -1
 
 
 if __name__ == '__main__':
-    haystack = "sadbutsad"
-    needle = "sad"
-    index = strStr(haystack, needle)
-    print(f"haystack = {haystack}, needle = {needle}, index = {index}")
+    # haystack = "sadbutsad"
+    # needle = "sad"
+    # index = strStr(haystack, needle)
+    # print(f"haystack = {haystack}, needle = {needle}, index = {index}")
+    #
+    # haystack = "leetcode"
+    # needle = "leeto"
+    # index = strStr(haystack, needle)
+    # print(f"haystack = {haystack}, needle = {needle}, index = {index}")
+    #
+    # haystack = "mississippi"
+    # needle = "issip"
+    # index = strStr(haystack, needle)
+    # print(f"haystack = {haystack}, needle = {needle}, index = {index}")
 
-    haystack = "leetcode"
-    needle = "leeto"
+    haystack = "aaa"
+    needle = "aaaa"
     index = strStr(haystack, needle)
     print(f"haystack = {haystack}, needle = {needle}, index = {index}")
