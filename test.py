@@ -46,6 +46,8 @@ if __name__ == '__main__':
 
     print(6 % 5)
 
+
+    print("A".isalpha())
     # arr = list(range(5))
     # print(arr)
 
