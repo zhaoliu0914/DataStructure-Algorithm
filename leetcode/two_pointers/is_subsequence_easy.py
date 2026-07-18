@@ -23,8 +23,6 @@ s and t consist only of lowercase English letters.
 def isSubsequence(s: str, t: str) -> bool:
     s_size = len(s)
     t_size = len(t)
-    if s_size != 0 and t_size == 0:
-        return False
     s_index = 0
     t_index = 0
     while s_index < s_size and t_index < t_size:
