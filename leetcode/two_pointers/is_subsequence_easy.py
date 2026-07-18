@@ -21,8 +21,25 @@ s and t consist only of lowercase English letters.
 
 
 def isSubsequence(s: str, t: str) -> bool:
-    pass
+    s_size = len(s)
+    t_size = len(t)
+    if s_size != 0 and t_size == 0:
+        return False
+    s_index = 0
+    t_index = 0
+    while s_index < s_size and t_index < t_size:
+        while s[s_index] != t[t_index]:
+            if t_index < (t_size - 1):
+                t_index += 1
+            else:
+                return False
+        s_index += 1
+        t_index += 1
 
+    if s_index != s_size:
+        return False
+    else:
+        return True
 
 if __name__ == '__main__':
     s = "abc"
@@ -32,5 +49,30 @@ if __name__ == '__main__':
 
     s = "axc"
     t = "ahbgdc"
+    result = isSubsequence(s, t)
+    print(f"s = {s}, t = {t}, result = {result}")
+
+    s = "b"
+    t = "c"
+    result = isSubsequence(s, t)
+    print(f"s = {s}, t = {t}, result = {result}")
+
+    s = "abc"
+    t = ""
+    result = isSubsequence(s, t)
+    print(f"s = {s}, t = {t}, result = {result}")
+
+    s = "aaaaaa"
+    t = "bbaaaa"
+    result = isSubsequence(s, t)
+    print(f"s = {s}, t = {t}, result = {result}")
+
+    s = "bb"
+    t = "ahbgdc"
+    result = isSubsequence(s, t)
+    print(f"s = {s}, t = {t}, result = {result}")
+
+    s = "abc"
+    t = "acb"
     result = isSubsequence(s, t)
     print(f"s = {s}, t = {t}, result = {result}")
