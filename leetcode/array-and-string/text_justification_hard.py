@@ -55,75 +55,21 @@ words[i].length <= maxWidth
 
 
 def fullJustify(words: list[str], maxWidth: int) -> list[str]:
-    size = len(words)
-    index = 0
-    line = 0
-    justified = []
-    line_content = []
-    count = 0
-    while index < size:
-        current = words[index]
-        count += len(current)
-        if len(line_content) > 0:
-            count += 1
-
-        if count <= maxWidth:
-            line_content.append(current)
-            index += 1
-        else:
-            if len(line_content) == 1:
-                justified.append(line_content[0])
-                for i in range(maxWidth - len(line_content[0])):
-                    justified[line] += " "
-            else:
-                line_count = 0
-                for c in line_content:
-                    line_count += len(c)
-                space = (maxWidth - line_count) // (len(line_content) - 1)
-                extra_space = (maxWidth - line_count) % (len(line_content) - 1)
-                #print(f"maxWidth = {maxWidth}, line_count = {line_count}, space = {space}, extra_space = {extra_space}")
-
-                for i, c in enumerate(line_content):
-                    if i == 0:
-                        justified.append(c)
-
-                    elif i > 0:
-                        if extra_space > 0:
-                            for j in range(space + 1):
-                                justified[line] += " "
-                            extra_space -= 1
-                        else:
-                            for j in range(space):
-                                justified[line] += " "
-                        justified[line] += c
-
-            line += 1
-            count = 0
-            line_content = []
-    if len(line_content) == 1:
-        justified.append(line_content[0])
-        for i in range(maxWidth - len(line_content[0])):
-            justified[line] += " "
-    else:
-        line_count = 0
-        for c in line_content:
-            line_count += len(c)
-        remain_space = maxWidth - line_count
-        #print(f"maxWidth = {maxWidth}, line_count = {line_count}, remain_space = {remain_space}")
-
-        for i, c in enumerate(line_content):
-            if i == 0:
-                justified.append(c)
-            elif i == (len(line_content) - 1):
-                justified[line] += " "
-                justified[line] += c
-                for j in range(remain_space - 1):
-                    justified[line] += " "
-            elif i > 0:
-                justified[line] += " "
-                justified[line] += c
-                remain_space -= 1
-    return justified
+    res, line, length = [], [], 0
+    for w in words:
+        # +len(line) accounts for one mandatory space between existing words
+        if length + len(line) + len(w) > maxWidth:
+            spaces = maxWidth - length
+            gaps = max(1, len(line) - 1)
+            for i in range(spaces):
+                line[i % gaps] += ' '  # round-robin: leftmost gaps get extras
+            res.append(''.join(line))
+            line, length = [], 0
+        line.append(w)
+        length += len(w)
+    # last line: left-justified, single spaces, padded on the right
+    res.append(' '.join(line).ljust(maxWidth))
+    return res
 
 
 
