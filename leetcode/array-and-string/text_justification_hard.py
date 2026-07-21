@@ -55,18 +55,23 @@ words[i].length <= maxWidth
 
 
 def fullJustify(words: list[str], maxWidth: int) -> list[str]:
-    res, line, length = [], [], 0
+    res = []
+    line = []
+    length = 0
     for w in words:
         # +len(line) accounts for one mandatory space between existing words
         if length + len(line) + len(w) > maxWidth:
             spaces = maxWidth - length
             gaps = max(1, len(line) - 1)
+            print(f"spaces = {spaces}, gaps = {gaps}")
             for i in range(spaces):
                 line[i % gaps] += ' '  # round-robin: leftmost gaps get extras
             res.append(''.join(line))
-            line, length = [], 0
+            line = []
+            length = 0
         line.append(w)
         length += len(w)
+    #print(f"res = {res}")
     # last line: left-justified, single spaces, padded on the right
     res.append(' '.join(line).ljust(maxWidth))
     return res
@@ -79,22 +84,22 @@ if __name__ == '__main__':
     justified = fullJustify(words, maxWidth)
     print(f"words = {words}, maxWidth = {maxWidth}, justified = {justified}")
 
-    words = ["What", "must", "be", "acknowledgment", "shall", "be"]
-    maxWidth = 16
-    justified = fullJustify(words, maxWidth)
-    print(f"words = {words}, maxWidth = {maxWidth}, justified = {justified}")
-
-    words = ["Science", "is", "what", "we", "understand", "well", "enough", "to", "explain", "to", "a", "computer.", "Art", "is", "everything", "else", "we", "do"]
-    maxWidth = 20
-    justified = fullJustify(words, maxWidth)
-    print(f"words = {words}, maxWidth = {maxWidth}, justified = {justified}")
-
-    words = ["ask","not","what","your","country","can","do","for","you","ask","what","you","can","do","for","your","country"]
-    maxWidth = 16
-    justified = fullJustify(words, maxWidth)
-    print(f"words = {words}, maxWidth = {maxWidth}, justified = {justified}")
-
-    words = ["My","momma","always","said,","\"Life","was","like","a","box","of","chocolates.","You","never","know","what","you're","gonna","get."]
-    maxWidth = 20
-    justified = fullJustify(words, maxWidth)
-    print(f"words = {words}, maxWidth = {maxWidth}, justified = {justified}")
+    # words = ["What", "must", "be", "acknowledgment", "shall", "be"]
+    # maxWidth = 16
+    # justified = fullJustify(words, maxWidth)
+    # print(f"words = {words}, maxWidth = {maxWidth}, justified = {justified}")
+    #
+    # words = ["Science", "is", "what", "we", "understand", "well", "enough", "to", "explain", "to", "a", "computer.", "Art", "is", "everything", "else", "we", "do"]
+    # maxWidth = 20
+    # justified = fullJustify(words, maxWidth)
+    # print(f"words = {words}, maxWidth = {maxWidth}, justified = {justified}")
+    #
+    # words = ["ask","not","what","your","country","can","do","for","you","ask","what","you","can","do","for","your","country"]
+    # maxWidth = 16
+    # justified = fullJustify(words, maxWidth)
+    # print(f"words = {words}, maxWidth = {maxWidth}, justified = {justified}")
+    #
+    # words = ["My","momma","always","said,","\"Life","was","like","a","box","of","chocolates.","You","never","know","what","you're","gonna","get."]
+    # maxWidth = 20
+    # justified = fullJustify(words, maxWidth)
+    # print(f"words = {words}, maxWidth = {maxWidth}, justified = {justified}")

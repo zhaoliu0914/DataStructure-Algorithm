@@ -46,8 +46,11 @@ if __name__ == '__main__':
 
     print(6 % 5)
 
-
-    print("A".isalpha())
+    line = ["This", "is", "an"]
+    for i in range(8):
+        print(f"{i} % 2 = {i % 2}")
+        line[i % 2] += ' '
+    print(f"line = {line}")
     # arr = list(range(5))
     # print(arr)
 
