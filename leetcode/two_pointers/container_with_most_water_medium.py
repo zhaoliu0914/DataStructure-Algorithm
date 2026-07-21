@@ -23,7 +23,21 @@ n == height.length
 
 
 def maxArea(height: list[int]) -> int:
-    pass
+    size = len(height)
+    left = 0
+    right = size - 1
+    best = 0
+    while left < right:
+        width = right - left
+        h = min(height[left], height[right])
+        volume = width * h
+        best = max(best, volume)
+
+        if height[left] < height[right]:
+            left += 1
+        else:
+            right -= 1
+    return best
 
 
 if __name__ == '__main__':
