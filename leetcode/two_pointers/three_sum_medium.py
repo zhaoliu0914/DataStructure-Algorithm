@@ -31,18 +31,37 @@ Constraints:
 
 
 def threeSum(nums: list[int]) -> list[list[int]]:
-    pass
-
+    size = len(nums)
+    triplets = []
+    index = 0
+    left = 0
+    right = size - 1
+    while index < size:
+        left = 0
+        right = size -1
+        while left < right:
+            if left == index:
+                left += 1
+            if right == index:
+                right -= 1
+            sum = nums[left] + nums[index] + nums[right]
+            if sum == 0:
+                triplets.append([nums[left], nums[index], nums[right]])
+                break
+            left += 1
+            right -= 1
+        index += 1
+    print(f"triplets = {triplets}")
 
 if __name__ == '__main__':
     nums = [-1, 0, 1, 2, -1, -4]
     result = threeSum(nums)
     print(f"nums = {nums}, result = {result}")
 
-    nums = [0, 1, 1]
-    result = threeSum(nums)
-    print(f"nums = {nums}, result = {result}")
-
-    nums = [0, 0, 0]
-    result = threeSum(nums)
-    print(f"nums = {nums}, result = {result}")
+    # nums = [0, 1, 1]
+    # result = threeSum(nums)
+    # print(f"nums = {nums}, result = {result}")
+    #
+    # nums = [0, 0, 0]
+    # result = threeSum(nums)
+    # print(f"nums = {nums}, result = {result}")

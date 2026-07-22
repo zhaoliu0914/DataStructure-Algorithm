@@ -51,6 +51,13 @@ if __name__ == '__main__':
         print(f"{i} % 2 = {i % 2}")
         line[i % 2] += ' '
     print(f"line = {line}")
+
+    set_new = set()
+    set_new.add([2, 1, 3])
+    set_new.add([1, 3, 0])
+    set_new.add([4, 0, 1])
+    set_new.add([1, 0, 3])
+    print(f"set_new = {set_new}")
     # arr = list(range(5))
     # print(arr)
 
