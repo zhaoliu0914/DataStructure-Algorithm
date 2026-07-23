@@ -31,37 +31,48 @@ Constraints:
 
 
 def threeSum(nums: list[int]) -> list[list[int]]:
+    nums.sort()
     size = len(nums)
-    triplets = []
-    index = 0
-    left = 0
-    right = size - 1
-    while index < size:
-        left = 0
-        right = size -1
+    result = []
+    for index in range(size - 2):
+        if nums[index] > 0:
+            break
+        if index > 0 and nums[index] == nums[index - 1]:
+            continue
+        left = index + 1
+        right = size - 1
         while left < right:
-            if left == index:
+            sum = nums[index] + nums[left] + nums[right]
+            if sum < 0:
                 left += 1
-            if right == index:
+            elif sum > 0:
                 right -= 1
-            sum = nums[left] + nums[index] + nums[right]
-            if sum == 0:
-                triplets.append([nums[left], nums[index], nums[right]])
-                break
-            left += 1
-            right -= 1
-        index += 1
-    print(f"triplets = {triplets}")
+            else:
+                result.append([nums[index], nums[left], nums[right]])
+                left += 1
+                right -= 1
+                while left < right and nums[left] == nums[left - 1]:
+                    left += 1
+    return result
+
 
 if __name__ == '__main__':
     nums = [-1, 0, 1, 2, -1, -4]
     result = threeSum(nums)
     print(f"nums = {nums}, result = {result}")
 
-    # nums = [0, 1, 1]
-    # result = threeSum(nums)
-    # print(f"nums = {nums}, result = {result}")
-    #
-    # nums = [0, 0, 0]
-    # result = threeSum(nums)
-    # print(f"nums = {nums}, result = {result}")
+    nums = [0, 1, 1]
+    result = threeSum(nums)
+    print(f"nums = {nums}, result = {result}")
+
+    nums = [0, 0, 0]
+    result = threeSum(nums)
+    print(f"nums = {nums}, result = {result}")
+
+    nums = [0, 0, 0, 0]
+    result = threeSum(nums)
+    print(f"nums = {nums}, result = {result}")
+
+    nums = [1, 2, 0, 1, 0, 0, 0, 0]
+    result = threeSum(nums)
+    print(f"nums = {nums}, result = {result}")
