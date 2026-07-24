@@ -25,21 +25,22 @@ Constraints:
 
 
 def minSubArrayLen(target: int, nums: list[int]) -> int:
-    pass
+    size = len(nums)
+
 
 
 if __name__ == '__main__':
     target = 7
     nums = [2, 3, 1, 2, 4, 3]
-    result = minSubArrayLen(target, nums)
-    print(f"target = {target}, nums = {nums}, result = {result}")
+    length = minSubArrayLen(target, nums)
+    print(f"target = {target}, nums = {nums}, length = {length}")
 
     target = 4
     nums = [1, 4, 4]
-    result = minSubArrayLen(target, nums)
-    print(f"target = {target}, nums = {nums}, result = {result}")
+    length = minSubArrayLen(target, nums)
+    print(f"target = {target}, nums = {nums}, length = {length}")
 
     target = 11
     nums = [1, 1, 1, 1, 1, 1, 1, 1]
-    result = minSubArrayLen(target, nums)
-    print(f"target = {target}, nums = {nums}, result = {result}")
+    length = minSubArrayLen(target, nums)
+    print(f"target = {target}, nums = {nums}, length = {length}")
