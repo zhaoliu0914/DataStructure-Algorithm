@@ -26,7 +26,15 @@ s consists of English letters, digits, symbols and spaces.
 
 
 def lengthOfLongestSubstring(s: str) -> int:
-    pass
+    left = 0
+    length = 0
+    substring = {}
+    for index, value in enumerate(s):
+        if value in substring and substring[value] >= left:
+            left = substring[value] + 1
+        length = max(length, index - left + 1)
+        substring[value] = index
+    return length
 
 
 if __name__ == '__main__':
@@ -38,6 +46,18 @@ if __name__ == '__main__':
     length = lengthOfLongestSubstring(s)
     print(f"s = {s}, length = {length}")
 
+    s = "aab"
+    length = lengthOfLongestSubstring(s)
+    print(f"s = {s}, length = {length}")
+
     s = "pwwkew"
+    length = lengthOfLongestSubstring(s)
+    print(f"s = {s}, length = {length}")
+
+    s = "dvdf"
+    length = lengthOfLongestSubstring(s)
+    print(f"s = {s}, length = {length}")
+
+    s = "abba"
     length = lengthOfLongestSubstring(s)
     print(f"s = {s}, length = {length}")
