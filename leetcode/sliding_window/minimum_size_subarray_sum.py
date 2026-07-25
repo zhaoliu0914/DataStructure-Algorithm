@@ -25,8 +25,21 @@ Constraints:
 
 
 def minSubArrayLen(target: int, nums: list[int]) -> int:
-    size = len(nums)
+    left = 0
+    total = 0
+    length = float("inf")
 
+    for index, value in enumerate(nums):
+        total += value
+        while total >= target:
+            length = min(length, index - left + 1)
+            total -= nums[left]
+            left += 1
+    #print(f"left = {left}, index = {index}")
+    if length == float("inf"):
+        return 0
+    else:
+        return length
 
 
 if __name__ == '__main__':
@@ -42,5 +55,10 @@ if __name__ == '__main__':
 
     target = 11
     nums = [1, 1, 1, 1, 1, 1, 1, 1]
+    length = minSubArrayLen(target, nums)
+    print(f"target = {target}, nums = {nums}, length = {length}")
+
+    target = 11
+    nums = [1, 2, 3, 4, 5]
     length = minSubArrayLen(target, nums)
     print(f"target = {target}, nums = {nums}, length = {length}")

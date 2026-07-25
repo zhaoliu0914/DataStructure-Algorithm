@@ -52,12 +52,9 @@ if __name__ == '__main__':
         line[i % 2] += ' '
     print(f"line = {line}")
 
-    set_new = set()
-    set_new.add([2, 1, 3])
-    set_new.add([1, 3, 0])
-    set_new.add([4, 0, 1])
-    set_new.add([1, 0, 3])
-    print(f"set_new = {set_new}")
+    best = float('inf')
+    print(f"float('inf') = {best}")
+
     # arr = list(range(5))
     # print(arr)
 
