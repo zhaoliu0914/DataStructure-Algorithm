@@ -55,6 +55,15 @@ if __name__ == '__main__':
     best = float('inf')
     print(f"float('inf') = {best}")
 
+    init_map = {}
+    init_map["word"] = 1
+    init_map["good"] = 2
+    init_map["best"] = 1
+    matched = init_map.copy()
+    matched["good"] = 1
+    print(f"init_map = {init_map}")
+    print(f"matched = {matched}")
+
     # arr = list(range(5))
     # print(arr)
 
