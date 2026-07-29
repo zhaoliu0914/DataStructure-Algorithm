@@ -32,7 +32,8 @@ s and t consist of uppercase and lowercase English letters.
 
 
 def minWindow(s: str, t: str) -> str:
-    pass
+    m = len(s)
+    n = len(t)
 
 
 if __name__ == '__main__':
