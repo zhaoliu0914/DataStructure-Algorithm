@@ -37,9 +37,53 @@ s and words[i] consist of lowercase English letters.
 
 
 def findSubstring(s: str, words: list[str]) -> list[int]:
-    words_length = len(words)
-    words_size = len(words[0])
+    word_size = len(words)
+    word_length = len(words[0])
+    total = word_length * word_size
+    if len(s) < total:
+        return []
 
+    result = []
+    need = {}
+    for word in words:
+        need[word] = need.get(word, 0) + 1
+    #print(f"need = {need}")
+
+    for offset in range(word_length):
+        count = 0
+        matched = {}
+        left = offset
+
+        for right in range(offset, len(s) - word_length + 1, word_length):
+            word = s[right: right + word_length]
+
+            if word not in words:
+                count = 0
+                matched = {}
+                left = right + word_length
+                continue
+
+            matched[word] = matched.get(word, 0) + 1
+            count += 1
+
+            #print(f"word = {word}, left = {left}, right = {right}, count = {count}, matched = {matched}")
+
+            while matched[word] > need[word]:
+                drop_word = s[left: left + word_length]
+
+                count -= 1
+                left += word_length
+                matched[drop_word] = matched[drop_word] - 1
+
+            #print(f"word = {word}, left = {left}, right = {right}, count = {count}, matched = {matched}")
+            if count == word_size:
+                result.append(left)
+
+                drop_word = s[left: left + word_length]
+                count -= 1
+                left += word_length
+                matched[drop_word] = matched[drop_word] - 1
+    return result
 
 
 if __name__ == '__main__':
