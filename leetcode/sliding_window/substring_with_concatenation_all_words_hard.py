@@ -37,38 +37,9 @@ s and words[i] consist of lowercase English letters.
 
 
 def findSubstring(s: str, words: list[str]) -> list[int]:
-    size = len(words[0])
-    init_map = {}
-    for word in words:
-        if word in init_map:
-            init_map[word] = init_map[word] + 1
-        else:
-            init_map[word] = 1
-    result = []
-    left = 0
-    while left < len(s):
-        right = left
-        matched = init_map.copy()
-        current = s[right: right + size]
-        while right < len(s) and right < (left + len(words) * size) and current in words:
-            current = s[right: right + size]
-            # print(f"right = {right}, current = {current}, matched = {matched}")
-            if current not in matched:
-                break
-            elif current in matched and matched[current] == 0:
-                break
-            else:
-                matched[current] = matched[current] - 1
-            numbers = matched.values()
-            is_match_all = True
-            for n in numbers:
-                if n != 0:
-                    is_match_all = False
-            if is_match_all:
-                result.append(left)
-            right += size
-        left += 1
-    return result
+    words_length = len(words)
+    words_size = len(words[0])
+
 
 
 if __name__ == '__main__':
