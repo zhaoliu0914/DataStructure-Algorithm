@@ -35,6 +35,43 @@ def minWindow(s: str, t: str) -> str:
     m = len(s)
     n = len(t)
 
+    if m < n:
+        return ""
+
+    need = {}
+    for char in t:
+        need[char] = need.get(char, 0) + 1
+
+    left = 0
+    count = 0
+    result = []
+    matched = {}
+    for right, char in enumerate(s):
+
+        if char not in need:
+            continue
+
+        matched[char] = matched.get(char, 0) + 1
+        count += 1
+
+        while matched[char] > need[char]:
+            left += 1
+            temp = s[left]
+            if temp not in need:
+                continue
+            elif temp in need and temp != char:
+                count -= 1
+                continue
+            else:
+                count -= 1
+                matched[temp] -= 1
+
+        if count == n:
+            result.append(s[left: right + 1])
+
+    print(f"result = {result}")
+    return min(result)
+
 
 if __name__ == '__main__':
     s = "ADOBECODEBANC"
