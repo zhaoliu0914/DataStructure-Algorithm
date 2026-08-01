@@ -69,7 +69,6 @@ def minWindow(s: str, t: str) -> str:
         if count == n:
             result.append(s[left: right + 1])
 
-    print(f"result = {result}")
     return min(result)
 
 
