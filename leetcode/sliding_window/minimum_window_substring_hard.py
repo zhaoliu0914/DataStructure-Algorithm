@@ -69,7 +69,7 @@ def minWindow(s: str, t: str) -> str:
         if count == n:
             result.append(s[left: right + 1])
 
-    return min(result)
+    #return min(result)
 
 
 if __name__ == '__main__':
