@@ -43,33 +43,32 @@ def minWindow(s: str, t: str) -> str:
         need[char] = need.get(char, 0) + 1
 
     left = 0
-    count = 0
-    result = []
-    matched = {}
+    start = 0
+    missing = len(t)
+    min_len = float("inf")
     for right, char in enumerate(s):
+        if char in need:
+            if need[char] > 0:
+                missing -= 1
+            need[char] -= 1
 
-        if char not in need:
-            continue
+        while missing == 0:
+            if right - left + 1 < min_len:
+                min_len = right - left + 1
+                start = left
 
-        matched[char] = matched.get(char, 0) + 1
-        count += 1
+            left_char = s[left]
+            if left_char in need:
+                need[left_char] += 1
+                if need[left_char] > 0:
+                    missing += 1
 
-        while matched[char] > need[char]:
             left += 1
-            temp = s[left]
-            if temp not in need:
-                continue
-            elif temp in need and temp != char:
-                count -= 1
-                continue
-            else:
-                count -= 1
-                matched[temp] -= 1
+            #print(f"right = {right}, current_char = {char}, left_char = {left_char}, left = {left}")
 
-        if count == n:
-            result.append(s[left: right + 1])
-
-    return min(result)
+    if min_len == float("inf"):
+        return ""
+    return s[start: start + min_len]
 
 
 if __name__ == '__main__':
