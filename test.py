@@ -64,6 +64,9 @@ if __name__ == '__main__':
     print(f"init_map = {init_map}")
     print(f"matched = {matched}")
 
+
+    print(6%3)
+
     # arr = list(range(5))
     # print(arr)
 

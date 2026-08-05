@@ -46,7 +46,51 @@ board[i][j] is a digit 1-9 or '.'.
 
 
 def isValidSudoku(board: list[list[str]]) -> bool:
-    pass
+    row_size = len(board)
+    column_size = len(board[0])
+
+    # Check for each row must contain the digits 1-9 without repetition.
+    for row in board:
+        matched = []
+        for element in row:
+            if element.isdigit():
+                if element not in matched:
+                    matched.append(element)
+                else:
+                    return False
+
+    # Check for each column must contain the digits 1-9 without repetition.
+    for column in range(column_size):
+        matched = []
+        for row in range(row_size):
+            element = board[row][column]
+            #print(f"row = {row}, column = {column}, element = {element}, matched = {matched}")
+            if element.isdigit():
+                if element not in matched:
+                    matched.append(element)
+                else:
+                    return False
+
+    # Check for each of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9 without repetition.
+    for row in range(row_size):
+        if row == 0 or row == 3 or row == 6:
+            tables = [[], [], []]
+        for column in range(column_size):
+            if 0 <= column < 3:
+                table_index = 0
+            elif 3 <= column < 6:
+                table_index = 1
+            else:
+                table_index = 2
+            element = board[row][column]
+            # print(f"row = {row}, column = {column}, element = {element}, tables = {tables}")
+            if element.isdigit():
+                if element not in tables[table_index]:
+                    tables[table_index].append(element)
+                else:
+                    return False
+
+    return True
 
 
 if __name__ == '__main__':
@@ -71,5 +115,17 @@ if __name__ == '__main__':
              [".", "6", ".", ".", ".", ".", "2", "8", "."],
              [".", ".", ".", "4", "1", "9", ".", ".", "5"],
              [".", ".", ".", ".", "8", ".", ".", "7", "9"]]
+    result = isValidSudoku(board)
+    print(f"result = {result}")
+
+    board = [[".", ".", "4", ".", ".", ".", "6", "3", "."],
+             [".", ".", ".", ".", ".", ".", ".", ".", "."],
+             ["5", ".", ".", ".", ".", ".", ".", "9", "."],
+             [".", ".", ".", "5", "6", ".", ".", ".", "."],
+             ["4", ".", "3", ".", ".", ".", ".", ".", "1"],
+             [".", ".", ".", "7", ".", ".", ".", ".", "."],
+             [".", ".", ".", "5", ".", ".", ".", ".", "."],
+             [".", ".", ".", ".", ".", ".", ".", ".", "."],
+             [".", ".", ".", ".", ".", ".", ".", ".", "."]]
     result = isValidSudoku(board)
     print(f"result = {result}")
