@@ -20,7 +20,8 @@ n == matrix[i].length
 
 
 def spiralOrder(matrix: list[list[int]]) -> list[int]:
-    pass
+    m = len(matrix)
+    n = len(matrix[0])
 
 
 if __name__ == '__main__':
