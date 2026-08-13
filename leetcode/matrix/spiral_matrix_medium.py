@@ -26,6 +26,7 @@ def spiralOrder(matrix: list[list[int]]) -> list[int]:
     print(f"n = {n}")
     for i in range(m):
         pass
+    return None
 
 
 if __name__ == '__main__':
