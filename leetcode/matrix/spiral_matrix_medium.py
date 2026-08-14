@@ -26,6 +26,8 @@ def spiralOrder(matrix: list[list[int]]) -> list[int]:
     print(f"n = {n}")
     for i in range(m):
         pass
+    for i in range(n):
+        pass
     return [2]
 
 
