@@ -22,8 +22,7 @@ n == matrix[i].length
 def spiralOrder(matrix: list[list[int]]) -> list[int]:
     m = len(matrix)
     n = len(matrix[0])
-    print(f"m = {m}")
-    print(f"n = {n}")
+    print(f"m = {m}, n = {n}")
     for i in range(m):
         pass
     for i in range(n):
