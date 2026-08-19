@@ -25,7 +25,7 @@ def spiralOrder(matrix: list[list[int]]) -> list[int]:
     print(f"m = {m}, n = {n}")
     # loop first array, then last element of every array, then loop last array from the last element to the first element,
     # then first element of every array except the first array,
-    #
+    # It may also need an indicate to show the boundary.
     for i in range(m):
         pass
     for i in range(n):
