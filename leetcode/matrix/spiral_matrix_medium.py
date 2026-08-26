@@ -32,7 +32,7 @@ def spiralOrder(matrix: list[list[int]]) -> list[int]:
 
         index += 1
         pass
-    return [2]
+    return [1]
 
 
 if __name__ == '__main__':
