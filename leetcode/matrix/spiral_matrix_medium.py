@@ -29,7 +29,7 @@ def spiralOrder(matrix: list[list[int]]) -> list[int]:
     # It can be a loop
     index = 0
     while index < m - 1:
-
+        pass
         index += 1
         pass
     return [3]
