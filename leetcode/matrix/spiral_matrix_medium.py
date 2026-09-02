@@ -34,11 +34,28 @@ def spiralOrder(matrix: list[list[int]]) -> list[int]:
 
     while top <= bottom and left <= right:
 
+        # from left --> right
         for column in range(left, right + 1):
             result.append(matrix[top][column])
         top += 1
 
-        
+        # from top --> bottom
+        for row in range(top, bottom + 1):
+            result.append(matrix[row][right])
+        right -= 1
+
+        # from right --> left
+        if top <= bottom:
+            for column in range(right, left - 1, -1):
+                print(f"bottom = {bottom}, column = {column}")
+                result.append(matrix[bottom][column])
+            bottom -= 1
+
+        if left <= right:
+            for row in range(bottom, top - 1, -1):
+                result.append(matrix[row][left])
+            left += 1
+
     return result
 
 
