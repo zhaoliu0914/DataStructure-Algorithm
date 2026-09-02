@@ -20,19 +20,26 @@ n == matrix[i].length
 
 
 def spiralOrder(matrix: list[list[int]]) -> list[int]:
-    m = len(matrix)
-    n = len(matrix[0])
-    print(f"m = {m}, n = {n}")
+    result = []
+
+    top = 0
+    bottom = len(matrix) - 1
+    left = 0
+    right = len(matrix[0]) - 1
+    print(f"top = {top}, bottom = {bottom}, left = {left}, right = {right}")
     # loop first array, then last element of every array, then loop last array from the last element to the first element,
     # then first element of every array except the first array,
     # It may also need an indicate to show the boundary.
     # It also requires an indicate to find out the level.
-    index = 0
-    while index < m - 1:
-        pass
-        index += 1
 
-    return [3]
+    while top <= bottom and left <= right:
+
+        for column in range(left, right + 1):
+            result.append(matrix[top][column])
+        top += 1
+
+        
+    return result
 
 
 if __name__ == '__main__':
