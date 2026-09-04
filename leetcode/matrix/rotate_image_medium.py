@@ -32,6 +32,17 @@ n == matrix.length == matrix[i].length
 """
 
 def rotate(matrix: list[list[int]]) -> None:
+    # there should be mapping
+    # take 3*3 matrix as an example:
+    # [1,1] -> [1,3]
+    # [1,2] -> [2,3]
+    # [1,3] -> [3,3]
+    # [2,1] -> [1,2]
+    # [2,2] -> [2,2]
+    # [2,3] -> [3,2]
+    # [3,1] -> [1,1]
+    # [3,2] -> [2,1]
+    # [3,3] -> [3,1]
     pass
 
 
