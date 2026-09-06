@@ -32,23 +32,29 @@ n == matrix.length == matrix[i].length
 """
 
 def rotate(matrix: list[list[int]]) -> None:
+    new_matrix = []
     size = len(matrix)
     array_length = len(matrix[0])
+    for i in range(size):
+        new_array = [0] * array_length
+        new_matrix.append(new_array)
+    print(f"new_matrix = {new_matrix}")
     # there should be mapping
     # take 3*3 matrix as an example:
-    # [1,1] -> [1,3]
-    # [1,2] -> [2,3]
-    # [1,3] -> [3,3]
-    # [2,1] -> [1,2]
-    # [2,2] -> [2,2]
-    # [2,3] -> [3,2]
-    # [3,1] -> [1,1]
-    # [3,2] -> [2,1]
-    # [3,3] -> [3,1]
-    for index in range(size, 0, -1):
+    # [0,0] -> [0,2]
+    # [0,1] -> [1,2]
+    # [0,2] -> [2,2]
+    # [1,0] -> [0,1]
+    # [1,1] -> [1,1]
+    # [1,2] -> [2,1]
+    # [2,0] -> [0,0]
+    # [2,1] -> [1,0]
+    # [2,2] -> [2,0]
+    for index in range(size - 1, -1, -1):
+        print(f"size = {size}, index = {index}")
         for i in range(array_length):
-            pass
-    pass
+            new_matrix[i][index - 1] = matrix[size - index - 1][i]
+    print(f"new_matrix = {new_matrix}")
 
 
 if __name__ == "__main__":
