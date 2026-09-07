@@ -50,6 +50,8 @@ def rotate(matrix: list[list[int]]) -> None:
     # [2,0] -> [0,0]
     # [2,1] -> [1,0]
     # [2,2] -> [2,0]
+
+    # There is a pattern, which we can switch 2 elements in one operation.
     for index in range(size - 1, -1, -1):
         print(f"size = {size}, index = {index}")
         for i in range(array_length):
