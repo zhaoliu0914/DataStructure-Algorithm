@@ -51,12 +51,15 @@ def rotate(matrix: list[list[int]]) -> None:
     # [2,1] -> [1,0]
     # [2,2] -> [2,0]
 
-    # There is a pattern, which we can switch 2 elements in one operation.
-    for index in range(size - 1, -1, -1):
-        print(f"size = {size}, index = {index}")
-        for i in range(array_length):
-            new_matrix[i][index - 1] = matrix[size - index - 1][i]
-    print(f"new_matrix = {new_matrix}")
+    """
+    1 2 3        1 4 7        7 4 1
+    4 5 6   ->   2 5 8   ->   8 5 2
+    7 8 9        3 6 9        9 6 3
+                transpose     reverse rows
+    """
+    for i in range(n):
+        for j in range(i + 1, n):
+            matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
 
 
 if __name__ == "__main__":
