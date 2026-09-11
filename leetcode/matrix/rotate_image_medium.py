@@ -60,6 +60,14 @@ def rotate(matrix: list[list[int]]) -> None:
             matrix[i][j] = matrix[j][i]
             matrix[j][i] = temp
 
+    # reverse
+    for i in range(size):
+        array_length = len(matrix[i])
+        for j in range(array_length//2):
+            #print(f"i = {i}, j = {j}, matrix[{i}][{j}] = {matrix[i][j]}")
+            temp = matrix[i][j]
+            matrix[i][j] = matrix[i][array_length - j - 1]
+            matrix[i][array_length - j - 1] = temp
 
     """
     Second solution: four-way cycle swap
