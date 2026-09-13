@@ -29,7 +29,8 @@ n == matrix[0].length
 
 
 def setZeroes(matrix: list[list[int]]) -> None:
-    pass
+    size = len(matrix)
+    array_size = len(matrix)
 
 
 if __name__ == "__main__":
