@@ -30,18 +30,35 @@ n == matrix[0].length
 
 def setZeroes(matrix: list[list[int]]) -> None:
     size = len(matrix)
-    array_size = len(matrix)
+    array_size = len(matrix[0])
+
+    row = set()
+    column = set()
+    for i in range(size):
+        for j in range(array_size):
+            element = matrix[i][j]
+            if element == 0:
+                row.add(i)
+                column.add(j)
+    # print(f"row = {row}")
+    # print(f"column = {column}")
+    for i in range(size):
+        for j in range(array_size):
+            if i in row or j in column:
+                matrix[i][j] = 0
 
 
 if __name__ == "__main__":
     matrix = [[1, 1, 1],
               [1, 0, 1],
               [1, 1, 1]]
-    result = setZeroes(matrix)
-    print(f"result = {result}")
+    print(f"original matrix = {matrix}")
+    setZeroes(matrix)
+    print(f"matrix = {matrix}")
 
     matrix = [[0, 1, 2, 0],
               [3, 4, 5, 2],
               [1, 3, 1, 5]]
-    result = setZeroes(matrix)
-    print(f"result = {result}")
+    print(f"original matrix = {matrix}")
+    setZeroes(matrix)
+    print(f"matrix = {matrix}")
