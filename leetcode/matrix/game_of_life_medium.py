@@ -42,7 +42,8 @@ board[i][j] is 0 or 1.
 
 
 def gameOfLife(board: list[list[int]]) -> None:
-    pass
+    size = len(board)
+    array_size = len(board[0])
 
 
 if __name__ == "__main__":
