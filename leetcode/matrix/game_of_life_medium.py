@@ -42,6 +42,7 @@ board[i][j] is 0 or 1.
 
 
 def gameOfLife(board: list[list[int]]) -> None:
+    # Every cell's next state is based only on the current states of its neighbors, never on a neighbor's next state.
     size = len(board)
     array_size = len(board[0])
 
