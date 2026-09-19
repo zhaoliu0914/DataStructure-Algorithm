@@ -46,6 +46,11 @@ def gameOfLife(board: list[list[int]]) -> None:
     size = len(board)
     array_size = len(board[0])
 
+    # need to determine the current state of neighbors from left, right, top, bottom, top-left, top-right, bottom-right, bottom-left.
+    for i in range(size):
+        for j in range(array_size):
+            pass
+
 
 if __name__ == "__main__":
     board = [[0, 1, 0],
