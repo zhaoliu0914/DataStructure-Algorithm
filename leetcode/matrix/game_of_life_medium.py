@@ -51,18 +51,29 @@ def gameOfLife(board: list[list[int]]) -> None:
         for j in range(array_size):
             live = 0
 
-            # access 9 neights:
-            for ni in range(-1, 0, 1):
-                for nj in range(-1, 0, 1):
+            # access 8 neights:
+            for ni in (-1, 0, 1):
+                for nj in (-1, 0, 1):
                     # this point is board[i][j] itself.
                     if ni == 0 and nj == 0:
                         continue
                     neight_i = i + ni
                     neight_j = j + nj
+
                     # consider the edge cases
-                    if 0 <= neight_i < size and  0 <= neight_j < array_size:
+                    if 0 <= neight_i < size and 0 <= neight_j < array_size:
                         if board[neight_i][neight_j] == 1:
                             live += 1
+
+                            print(f"board[{i}][{j}] = {board[i][j]}, neight_i = {neight_i}, neight_j = {neight_j}, live = {live}")
+
+            # print(f"board[{i}][{j}] = {board[i][j]}, live = {live}")
+            # if board[i][j] == 1:
+            #     if live < 2 or live > 3:
+            #         board[i][j] = 0
+            # else:
+            #     if live == 3:
+            #         board[i][j] = 1
 
 
 if __name__ == "__main__":
@@ -74,8 +85,8 @@ if __name__ == "__main__":
     gameOfLife(board)
     print(f"board = {board}")
 
-    board = [[1, 1],
-             [1, 0]]
-    print(f"original board = {board}")
-    gameOfLife(board)
-    print(f"board = {board}")
+    # board = [[1, 1],
+    #          [1, 0]]
+    # print(f"original board = {board}")
+    # gameOfLife(board)
+    # print(f"board = {board}")
