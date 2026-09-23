@@ -69,13 +69,13 @@ def gameOfLife(board: list[list[int]]) -> None:
 
             # Since it only considers the old state of elements, we need a way to store 2 states in one matrix.
 
-            # print(f"board[{i}][{j}] = {board[i][j]}, live = {live}")
-            # if board[i][j] == 1:
-            #     if live < 2 or live > 3:
-            #         board[i][j] = 0
-            # else:
-            #     if live == 3:
-            #         board[i][j] = 1
+            print(f"board[{i}][{j}] = {board[i][j]}, live = {live}")
+            if board[i][j] == 1:
+                if live < 2 or live > 3:
+                    board[i][j] = 0
+            else:
+                if live == 3:
+                    board[i][j] = 1
 
 
 if __name__ == "__main__":
