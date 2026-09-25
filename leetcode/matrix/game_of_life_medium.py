@@ -63,10 +63,10 @@ def gameOfLife(board: list[list[int]]) -> None:
                     # consider the edge cases
                     if 0 <= neight_i < size and 0 <= neight_j < array_size:
                         # need update also!!!!!!
-                        if board[neight_i][neight_j] == 1:
+                        if board[neight_i][neight_j] & 1:
                             live += 1
 
-                            print(f"board[{i}][{j}] = {board[i][j]}, neight_i = {neight_i}, neight_j = {neight_j}, live = {live}")
+                            #print(f"board[{i}][{j}] = {board[i][j]}, neight_i = {neight_i}, neight_j = {neight_j}, live = {live}")
 
             # Since it only considers the old state of elements, we need a way to store 2 states in one matrix.
 
@@ -77,6 +77,11 @@ def gameOfLife(board: list[list[int]]) -> None:
             else:
                 if live == 3:
                     board[i][j] = board[i][j] | 2
+
+    # Move the next state into place
+    for i in range(size):
+        for j in range(array_size):
+            board[i][j] >>= 1
 
 
 if __name__ == "__main__":
