@@ -5,8 +5,8 @@ The board is made up of an m x n grid of cells, where each cell has an initial s
 Each cell interacts with its eight neighbors (horizontal, vertical, diagonal) using the following four rules (taken from the above Wikipedia article):
 
 Any live cell with fewer than two live neighbors dies as if caused by under-population.
-Any live cell with two or three live neighbors lives on to the next generation.
 Any live cell with more than three live neighbors dies, as if by over-population.
+Any live cell with two or three live neighbors lives on to the next generation.
 Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
 The next state of the board is determined by applying the above rules simultaneously to every cell in the current state of the m x n grid board.
 In this process, births and deaths occur simultaneously.
@@ -63,16 +63,16 @@ def gameOfLife(board: list[list[int]]) -> None:
                     # consider the edge cases
                     if 0 <= neight_i < size and 0 <= neight_j < array_size:
                         # need update also!!!!!!
-                        if board[neight_i][neight_j] & 1:
+                        if (board[neight_i][neight_j] & 1) == 1:
                             live += 1
 
                             #print(f"board[{i}][{j}] = {board[i][j]}, neight_i = {neight_i}, neight_j = {neight_j}, live = {live}")
 
             # Since it only considers the old state of elements, we need a way to store 2 states in one matrix.
 
-            print(f"board[{i}][{j}] = {board[i][j]}, live = {live}")
-            if board[i][j] == 1:
-                if live < 2 or live > 3:
+            #print(f"board[{i}][{j}] = {board[i][j]}, live = {live}")
+            if (board[i][j] & 1) == 1:
+                if live == 2 or live == 3:
                     board[i][j] = board[i][j] | 2
             else:
                 if live == 3:
