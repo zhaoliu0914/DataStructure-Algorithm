@@ -24,7 +24,8 @@ ransomNote and magazine consist of lowercase English letters.
 
 
 def canConstruct(ransomNote: str, magazine: str) -> bool:
-    pass
+    if len(magazine) < len(ransomNote):
+        return False
 
 
 if __name__ == "__main__":
