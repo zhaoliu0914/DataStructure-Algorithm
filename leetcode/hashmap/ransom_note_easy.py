@@ -27,13 +27,6 @@ def canConstruct(ransomNote: str, magazine: str) -> bool:
     if len(magazine) < len(ransomNote):
         return False
 
-    ransomNote_map = dict()
-    for element in ransomNote:
-        if ransomNote_map.get(element) == None:
-            ransomNote_map[element] = 1
-        else:
-            ransomNote_map[element] += 1
-
     magazine_map = dict()
     for element in magazine:
         if magazine_map.get(element) == None:
@@ -41,10 +34,11 @@ def canConstruct(ransomNote: str, magazine: str) -> bool:
         else:
             magazine_map[element] += 1
 
-    for element in ransomNote_map.keys():
-        count = ransomNote_map[element]
-        if magazine_map.get(element) == None or magazine_map[element] < count:
+    for element in ransomNote:
+        if magazine_map.get(element) == None or magazine_map.get(element) == 0:
             return False
+        else:
+            magazine_map[element] -= 1
 
     return True
 
