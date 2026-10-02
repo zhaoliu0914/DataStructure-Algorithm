@@ -39,17 +39,16 @@ def isIsomorphic(s: str, t: str) -> bool:
 
     index = 0
     size = len(s)
-    maps = dict()
+    s_to_t_map = dict()
+    t_to_s_map = dict()
     while index < size:
-        key = s[index]
-        value = t[index]
+        s_element = s[index]
+        t_element = t[index]
 
-        if maps.get(key) == None:
-            if value in maps.values():
-                return False
-            maps[key] = value
-        elif maps.get(key) != value:
+        if s_to_t_map.get(s_element, t_element) != t_element or t_to_s_map.get(t_element, s_element) != s_element:
             return False
+        s_to_t_map[s_element] = t_element
+        t_to_s_map[t_element] = s_element
 
         index += 1
 
