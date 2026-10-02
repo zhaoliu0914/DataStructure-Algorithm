@@ -34,7 +34,26 @@ s and t consist of any valid ascii character.
 
 
 def isIsomorphic(s: str, t: str) -> bool:
-    pass
+    if len(s) != len(t):
+        return False
+
+    index = 0
+    size = len(s)
+    maps = dict()
+    while index < size:
+        key = s[index]
+        value = t[index]
+
+        if maps.get(key) == None:
+            if value in maps.values():
+                return False
+            maps[key] = value
+        elif maps.get(key) != value:
+            return False
+
+        index += 1
+
+    return True
 
 
 if __name__ == "__main__":
@@ -50,5 +69,15 @@ if __name__ == "__main__":
 
     s = "paper"
     t = "title"
+    result = isIsomorphic(s, t)
+    print(f"s = {s}, t = {t}, result = {result}")
+
+    s = "bbbaaaba"
+    t = "aaabbbba"
+    result = isIsomorphic(s, t)
+    print(f"s = {s}, t = {t}, result = {result}")
+
+    s = "badc"
+    t = "baba"
     result = isIsomorphic(s, t)
     print(f"s = {s}, t = {t}, result = {result}")
