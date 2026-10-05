@@ -44,8 +44,6 @@ def wordPattern(pattern: str, s: str) -> bool:
     left_to_right_map = dict()
     right_to_left_map = dict()
 
-    
-
     index = 0
     while index < len(pattern):
         left = pattern[index]
