@@ -36,7 +36,30 @@ All the words in s are separated by a single space.
 
 
 def wordPattern(pattern: str, s: str) -> bool:
-    pass
+    s_array = s.split()
+
+    if len(pattern) != len(s_array):
+        return False
+
+    left_to_right_map = dict()
+    right_to_left_map = dict()
+
+    
+
+    index = 0
+    while index < len(pattern):
+        left = pattern[index]
+        right = s_array[index]
+
+        if left_to_right_map.get(left, right) != right or right_to_left_map.get(right, left) != left:
+            return False
+
+        left_to_right_map[left] = right
+        right_to_left_map[right] = left
+
+        index += 1
+
+    return True
 
 
 if __name__ == "__main__":
