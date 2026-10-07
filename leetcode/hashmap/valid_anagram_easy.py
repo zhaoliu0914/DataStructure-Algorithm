@@ -21,7 +21,26 @@ Follow up: What if the inputs contain Unicode characters? How would you adapt yo
 
 
 def isAnagram(s: str, t: str) -> bool:
-    pass
+    if len(s) != len(t):
+        return False
+
+    s_map = dict()
+    t_map = dict()
+
+    for element in s:
+        s_map[element] = s_map.get(element, 0) + 1
+    for element in t:
+        t_map[element] = t_map.get(element, 0) + 1
+
+    if len(s_map) != len(t_map):
+        return False
+
+    for element in s_map:
+        value = s_map[element]
+        if t_map.get(element, 0) != value:
+            return False
+
+    return True
 
 
 if __name__ == "__main__":
