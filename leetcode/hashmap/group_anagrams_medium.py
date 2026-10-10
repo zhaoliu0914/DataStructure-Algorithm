@@ -25,9 +25,27 @@ Constraints:
 strs[i] consists of lowercase English letters.
 """
 
+from collections import defaultdict
+
 
 def groupAnagrams(strs: list[str]) -> list[list[str]]:
-    pass
+    if len(strs) == 1:
+        return [strs]
+
+    word_map = dict()
+    for str in strs:
+        char_array = [0] * 26
+        for char in str:
+            index = ord(char) - ord('a') 
+            char_array[index] += 1
+        # print(f"str = {str}, char_array = {char_array}, word_map = {word_map}")
+        char_array = tuple(char_array)
+        if char_array in word_map:
+            word_map[char_array].append(str)
+        else:
+            word_map[char_array] = [str]
+    # print(f"word_map.values = {list(word_map.values())}")
+    return list(word_map.values())
 
 
 if __name__ == "__main__":
@@ -40,5 +58,9 @@ if __name__ == "__main__":
     print(f"strs = {strs}, result = {result}")
 
     strs = ["a"]
+    result = groupAnagrams(strs)
+    print(f"strs = {strs}, result = {result}")
+
+    strs = ["cab", "tin", "pew", "duh", "may", "ill", "buy", "bar", "max", "doc"]
     result = groupAnagrams(strs)
     print(f"strs = {strs}, result = {result}")
