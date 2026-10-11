@@ -30,21 +30,31 @@ Follow-up: Can you come up with an algorithm that is less than O(n2) time comple
 
 
 def twoSum(nums: list[int], target: int) -> list[int]:
-    pass
+    left = 0
+    right = len(nums) - 1
+    while left < right:        
+        sum = nums[left] + nums[right]
+        print(f"left = {left}, right = {right}, sum = {sum}")
+        if sum < target:
+            left += 1
+        elif sum > target:
+            right -= 1
+        else:
+            return [left, right]
 
 
 if __name__ == "__main__":
-    nums = [2, 7, 11, 15]
-    target = 9
-    result = twoSum(nums, target)
-    print(f"nums = {nums}, target = {target}, result = {result}")
+    # nums = [2, 7, 11, 15]
+    # target = 9
+    # result = twoSum(nums, target)
+    # print(f"nums = {nums}, target = {target}, result = {result}")
 
     nums = [3, 2, 4]
     target = 6
     result = twoSum(nums, target)
     print(f"nums = {nums}, target = {target}, result = {result}")
 
-    nums = [3, 3]
-    target = 6
-    result = twoSum(nums, target)
-    print(f"nums = {nums}, target = {target}, result = {result}")
+    # nums = [3, 3]
+    # target = 6
+    # result = twoSum(nums, target)
+    # print(f"nums = {nums}, target = {target}, result = {result}")
