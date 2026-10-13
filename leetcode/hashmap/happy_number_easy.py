@@ -28,13 +28,32 @@ Constraints:
 
 
 def isHappy(n: int) -> bool:
-    pass
+    if n == 1:
+        return True
+    
+    visited_set = set()
+    while n != 1:
+        #print(f"n = {n}, visited_set = {visited_set}")
+        if n in visited_set:
+            return False
+
+        visited_set.add(n)
+
+        total = 0
+        while n > 0:
+            num = n % 10
+            total = total + num * num
+            n = n // 10
+
+        if total == 1:
+            return True
+        n = total
 
 
 if __name__ == "__main__":
-    n = 19
-    result = isHappy(n)
-    print(f"n = {n}, result = {result}")
+    # n = 19
+    # result = isHappy(n)
+    # print(f"n = {n}, result = {result}")
 
     n = 2
     result = isHappy(n)
