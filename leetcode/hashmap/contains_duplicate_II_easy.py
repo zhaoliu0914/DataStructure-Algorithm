@@ -24,7 +24,8 @@ Constraints:
 
 
 def containsNearbyDuplicate(nums: list[int], k: int) -> bool:
-    pass
+    for num in nums:
+        pass
 
 
 if __name__ == "__main__":
