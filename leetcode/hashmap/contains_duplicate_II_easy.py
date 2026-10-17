@@ -24,6 +24,7 @@ Constraints:
 
 
 def containsNearbyDuplicate(nums: list[int], k: int) -> bool:
+    visited_map = dict()
     for num in nums:
         pass
 
