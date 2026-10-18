@@ -25,8 +25,16 @@ Constraints:
 
 def containsNearbyDuplicate(nums: list[int], k: int) -> bool:
     visited_map = dict()
-    for num in nums:
-        pass
+    for index, num in enumerate(nums):
+        if num in visited_map:
+            #print(f"index = {index}, num = {num}, visited_map = {visited_map}")
+            if index - visited_map[num] <= k:
+                return True
+            else:
+                visited_map[num] = index
+        else:
+            visited_map[num] = index
+    return False
 
 
 if __name__ == "__main__":
