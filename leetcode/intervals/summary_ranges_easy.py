@@ -34,7 +34,10 @@ nums is sorted in ascending order.
 """
 
 def summaryRanges(nums: list[int]) -> list[str]:
-    pass
+    ranges = []
+    index = 0
+    while index < len(nums)
+        pass
 
 
 if __name__ == "__main__":
