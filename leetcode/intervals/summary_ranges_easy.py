@@ -33,29 +33,29 @@ All the values of nums are unique.
 nums is sorted in ascending order.
 """
 
+
 def summaryRanges(nums: list[int]) -> list[str]:
     ranges = []
     index = 0
     while index < len(nums):
         end = index
         range_str = f"{nums[index]}"
-        while end+1 < len(nums) and nums[end]+1 == nums[end+1]:
+        while end + 1 < len(nums) and nums[end] + 1 == nums[end + 1]:
             end += 1
         if index != end:
             range_str += f"->{nums[end]}"
         ranges.append(range_str)
-        #print(range_str)
+        # print(range_str)
 
         index = end + 1
     return ranges
-        
 
 
 if __name__ == "__main__":
-    nums = [0,1,2,4,5,7]
+    nums = [0, 1, 2, 4, 5, 7]
     result = summaryRanges(nums)
     print(f"nums = {nums}, result = {result}")
 
-    nums = [0,2,3,4,6,8,9]
+    nums = [0, 2, 3, 4, 6, 8, 9]
     result = summaryRanges(nums)
     print(f"nums = {nums}, result = {result}")

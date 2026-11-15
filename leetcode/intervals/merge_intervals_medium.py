@@ -25,19 +25,30 @@ intervals[i].length == 2
 0 <= starti <= endi <= 104
 """
 
+
 def merge(intervals: list[list[int]]) -> list[list[int]]:
-    pass
+    intervals.sort(key=lambda x: x[0])
+    results = [intervals[0]]
+
+    for start, end in intervals:
+        #print(f"{start}, {end}")
+        if results[-1][0] <= start <= results[-1][1]:
+            if end > results[-1][1]:
+                results[-1][1] = end
+        else:
+            results.append([start, end])
+    return results
 
 
 if __name__ == "__main__":
-    intervals = [[1,3],[2,6],[8,10],[15,18]]
+    intervals = [[1, 3], [2, 6], [8, 10], [15, 18]]
     result = merge(intervals)
     print(f"intervals = {intervals}, result = {result}")
 
-    intervals = [[1,4],[4,5]]
+    intervals = [[1, 4], [4, 5]]
     result = merge(intervals)
     print(f"intervals = {intervals}, result = {result}")
 
-    intervals = [[4,7],[1,4]]
+    intervals = [[4, 7], [1, 4]]
     result = merge(intervals)
     print(f"intervals = {intervals}, result = {result}")
