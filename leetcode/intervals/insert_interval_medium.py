@@ -37,10 +37,22 @@ def insert(intervals: list[list[int]], newInterval: list[int]) -> list[list[int]
     results = []
     i = 0
 
-    while i < size and intervals[i][0] < new_start:
+    while i < size and intervals[i][1] < new_start:
         results.append(intervals[i])
+        #print(f"i = {i}, results = {results}")
         i += 1
 
+    while i < size and intervals[i][0] <= new_end:
+        new_start = min(new_start, intervals[i][0])
+        new_end = max(new_end, intervals[i][1])
+        #print(f"i = {i}, new_start = {new_start}, new_end = {new_end}")
+        i += 1
+    results.append([new_start, new_end])
+
+    while i < size:
+        results.append(intervals[i])
+        #print(f"i = {i}, results = {results}")
+        i += 1
 
     return results
 
@@ -52,5 +64,10 @@ if __name__ == '__main__':
 
     intervals = [[1, 2], [3, 5], [6, 7], [8, 10], [12, 16]]
     newInterval = [4, 8]
+    result = insert(intervals, newInterval)
+    print(f"intervals = {intervals}, newInterval = {newInterval}, result = {result}")
+
+    intervals = []
+    newInterval = [5, 7]
     result = insert(intervals, newInterval)
     print(f"intervals = {intervals}, newInterval = {newInterval}, result = {result}")
