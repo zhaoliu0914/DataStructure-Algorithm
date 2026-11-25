@@ -39,7 +39,18 @@ points[i].length == 2
 
 
 def findMinArrowShots(points: list[list[int]]) -> int:
-    pass
+    points.sort(key=lambda x: x[0])
+    ranges = [points[0]]
+    index = 1
+
+    while index < len(points):
+        element = points[index]
+        start = element[0]
+        end = element[1]
+
+        if ranges[-1][1] >= start:
+            pass
+
 
 
 if __name__ == '__main__':
