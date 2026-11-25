@@ -49,8 +49,14 @@ def findMinArrowShots(points: list[list[int]]) -> int:
         end = element[1]
 
         if ranges[-1][1] >= start:
-            pass
+            ranges[-1][0] = min(ranges[-1][0], start)
+            ranges[-1][1] = min(ranges[-1][1], end)
+        else:
+            ranges.append([start, end])
+        index += 1
 
+    #print(ranges)
+    return len(ranges)
 
 
 if __name__ == '__main__':
