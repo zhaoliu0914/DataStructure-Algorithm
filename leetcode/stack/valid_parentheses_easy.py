@@ -37,7 +37,7 @@ s consists of parentheses only '()[]{}'.
 
 
 def isValid(s: str) -> bool:
-    pass
+    size = len(s)
 
 
 if __name__ == '__main__':
